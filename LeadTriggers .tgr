@@ -11,7 +11,11 @@ trigger LeadTriggers on Lead (after insert,after update,before update, before in
     
     if(trigger.isBefore && (Trigger.isUpdate || Trigger.isInsert)) {
         LeadTriggerHandler.TranslateCountryToISO2(trigger.new);
+		}
+	if(trigger.isBefore && (Trigger.isUpdate || Trigger.isInsert)) {
+		
         LeadTriggerHandler.LeadEmailCheckonContact(trigger.new);
     }
     
 }
+
